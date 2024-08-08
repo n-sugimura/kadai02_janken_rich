@@ -1,0 +1,149 @@
+
+*{
+	margin: 0 ;
+	padding:0;
+  }
+
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: hsl(0, 0%, 100%);
+	z-index: 9999999;
+	text-align:center;
+	color:hsl(0, 0%, 100%);
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*========= 画面遷移のためのCSS ===============*/
+
+/*画面遷移アニメーション*/
+
+body{
+    background:hsl(0, 0%, 0%);/*遷移アニメーションと同じ色を指定*/
+}
+
+body.appear{
+    background:hsl(0, 0%, 100%);/*画面を開いた後の背景色を指定*/
+}
+
+.splashbg{
+    display: none;
+	content: "";
+	position:fixed;
+	transform: scale(100);
+	background-color: hsl(0, 0%, 0%);/*伸びる背景色の設定*/
+	z-index: 999;
+    /*丸のスタートの形状*/
+    top:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+    left:calc(50% - 1rem);/*50%から円の半径を引いた値*/
+	width: 2rem;
+	height: 2rem;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+    display: block;
+    border-radius: 50%;	
+	animation-name:PageAnime;
+	animation-duration:1s;
+	animation-fill-mode:forwards;
+}
+
+@keyframes PageAnime{
+	0% {/*丸のスタート位置と形状*/
+		transform: scale(100);
+	
+	}
+	100% {/*丸の終了位置と形状*/
+		transform: scale(0);
+		display: none;/*終了時は消える*/
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+#container{
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay: 0.8s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+
+/*ボタン装飾*/
+p{
+	text-align:center;
+  }
+
+  button {
+	  display: block;
+	  background: orange;
+	  font-size: large;
+	  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	  padding-top: 7px;
+	  padding-bottom: 7px;
+	  padding-left: 30px;
+	  padding-right: 30px;
+	  margin-top: 15px;
+	  margin-left: 15px;
+	  margin-right: 15px;
+	}
+
+  #B{
+	  display: flex;
+	  justify-content: center;
+
+  }
+
+  
+  #hyouji{
+	  text-align:center;
+	  font-size: large;
+	  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+
+  #Rejan1{
+	  text-align:center;
+	  font-size: x-large;
+	  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	  margin: 5px;
+  }
+
+  #Rejan2{
+	  text-align:center;
+	  font-size: 100px;
+	  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	  margin: 10px;
+  }
+
+
+  #jankenpon{
+	  margin-bottom: 1px;
+	  transform: rotate(180deg);
+  }
+
+ 
